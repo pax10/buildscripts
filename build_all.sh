@@ -9,6 +9,7 @@ RELEASE="$1"
 OFFICIAL="$3"
 LOGS="$HOME/android/build_logs"
 
+
 # Remove previous build info
 echo "Removing previous build.prop"
 rm out/target/product/d2att/system/build.prop;
