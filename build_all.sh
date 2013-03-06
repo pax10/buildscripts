@@ -7,6 +7,7 @@ DATE=`date +"%Y%m%d"`
 rdir=`pwd`
 RELEASE="$1"
 OFFICIAL="$3"
+LOGS="$HOME/android/build_logs"
 
 # Remove previous build info
 echo "Removing previous build.prop"
@@ -90,7 +91,7 @@ fi
 
 # Build RootBox Mako (Nexus 4)
 . build/envsetup.sh;
-brunch rootbox_mako-userdebug;
+brunch rootbox_mako-userdebug | tee $LOGS/rootbox_mako-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop
@@ -109,7 +110,7 @@ fi
 
 
 # Build RootBox Grouper
-brunch rootbox_grouper-userdebug;
+brunch rootbox_grouper-userdebug | tee $LOGS/rootbox_grouper-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop
@@ -127,7 +128,7 @@ else
 fi
 
 # Build RootBox SGH-I747
-brunch rootbox_d2att-userdebug;
+brunch rootbox_d2att-userdebug | tee $LOGS/rootbox_d2att-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop
@@ -146,7 +147,7 @@ else
 fi
 
 # Build RootBox SGH-T999
-brunch rootbox_d2tmo-userdebug;
+brunch rootbox_d2tmo-userdebug | tee $LOGS/rootbox_d2tmo-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop
@@ -164,7 +165,7 @@ else
 fi
 
 # Build RootBox SGH-I535
-brunch rootbox_d2vzw-userdebug;
+brunch rootbox_d2vzw-userdebug | tee $LOGS/rootbox_d2vzw-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop
@@ -182,7 +183,7 @@ else
 fi
 
 # Build RootBox GT-I9100
-brunch rootbox_i9100-userdebug;
+brunch rootbox_i9100-userdebug | tee $LOGS/rootbox_i9100-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop
@@ -200,7 +201,7 @@ else
 fi
 
 # Build RootBox GT-I9100G
-brunch rootbox_i9100g-userdebug;
+brunch rootbox_i9100g-userdebug | tee $LOGS/rootbox_i9100g-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop
@@ -218,7 +219,7 @@ else
 fi
 
 # Build RootBox GT-I9300
-brunch rootbox_i9300-userdebug;
+brunch rootbox_i9300-userdebug | tee $LOGS/rootbox_i9300-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop
@@ -236,7 +237,7 @@ else
 fi
 
 # Build RootBox Maguro
-brunch rootbox_maguro-userdebug;
+brunch rootbox_maguro-userdebug | tee $LOGS/rootbox_maguro-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop
@@ -253,7 +254,7 @@ else
 fi
 
 # Build RootBox Toro
-brunch rootbox_toro-userdebug;
+brunch rootbox_toro-userdebug | tee $LOGS/rootbox_toro-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop
@@ -271,7 +272,7 @@ else
 fi
 
 # Build RootBox GT-N7105
-brunch rootbox_t0lte-userdebug;
+brunch rootbox_t0lte-userdebug | tee $LOGS/rootbox_t0lte-userdebug-$(date +'%Y%m%d-%T').log;
 
 # Get Package Name
 sed -i -e 's/rootbox_//' $OUT/system/build.prop

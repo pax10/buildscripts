@@ -19,6 +19,8 @@ CLEAN="$4"
 # Build Date/Version
 VERSION=`date +%Y%m%d`
 
+# Directory where you wanna store build logs
+LOGS="$HOME/android/build_logs"
 
 # Time of build startup
 res1=$(date +%s.%N)
@@ -67,7 +69,8 @@ echo -e ""
 echo -e "${bldblu}Starting RootBox build for $DEVICE ${txtrst}"
 
 # start compilation
-brunch "rootbox_$DEVICE-userdebug" -j"$THREADS";
+# log builds by date + time
+brunch "rootbox_$DEVICE-userdebug" -j"$THREADS" | tee $LOGS/rootbox_$DEVICE-userdebug-$(date +'%Y%m%d-%T').log;
 echo -e ""
 
 # finished? get elapsed time

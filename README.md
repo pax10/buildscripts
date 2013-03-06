@@ -1,5 +1,17 @@
-Vanilla RootBox
-===============
+| a fork of RootBox's build scripts |
+ ==================================
+
+I'll end up tossing any of the scripts I use in here so being lazy is really easy.
+
+
+
+
+
+
+
+ =========
+| RootBox | ===============================================================
+ =========
 
 Getting started
 ---------------
@@ -37,5 +49,7 @@ ex: $ . build_rootbox.sh i9100 sync 12 clean (This will sync latest sources, cle
 You might want to consider using CCACHE to speed up build time after the first build.
 
 This will make a signed flashable zip file located in out/target/product/-device-/RootBox-JB-(Device)-Nightly-(Date).zip
+
+==========================================================================
 
 
