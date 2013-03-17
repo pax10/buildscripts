@@ -29,7 +29,7 @@ res1=$(date +%s.%N)
 echo -e "${red}Building ${bldred}raumZero-$VERSION ${txtrst}";
 echo -e ""
 echo -e ""
-echo -e  ${bldred}"  ____ ____ _  _ _  _    ___  ____ ____ ____"
+echo -e  ${bldred}" ____ ____ _  _ _  _    ___  ____ ____ ____"
 echo -e " |__/ |__| |  | |\/|      /  |___ |__/ |  |"
 echo -e " |  \ |  | |__| |  |     /__ |___ |  \ |__|"
 echo -e
@@ -63,6 +63,7 @@ echo -e "${bldred}Lunching your device ${txtrst}"
 lunch "raumzero_$DEVICE-userdebug";
 
 echo -e ""
+
 echo -e "${bldred}Starting raumZero build for $DEVICE ${txtrst}"
 
 # start compilation
