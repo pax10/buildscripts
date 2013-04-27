@@ -39,7 +39,7 @@ echo -e ""
 if [ "$SYNC" == "sync" ]
 then
    echo -e "${bldred}Syncing latest linaro+raumZero sources ${txtrst}"
-   repo sync -j"$THREADS"
+   echo -e "$(repo sync -j${THREADS})"
    echo -e ""
 fi
 
@@ -47,7 +47,7 @@ fi
 if [ "$CLEAN" == "clean" ]
 then
    echo -e "${bldred}Cleaning up out folder ${txtrst}"
-   make clobber;
+   echo -e "$(make clobber)";
 else
   echo -e "${bldred}Skipping out folder cleanup ${txtrst}"
 fi
@@ -55,20 +55,20 @@ fi
 
 # setup environment
 echo -e "${bldred}Setting up build environment ${txtrst}"
-. build/envsetup.sh
+echo -e "$(source build/envsetup.sh)"
 
 # lunch device
 echo -e ""
 echo -e "${bldred}Lunching your device ${txtrst}"
-lunch "raumzero_$DEVICE-userdebug";
+echo -e "$(lunch "raumzero_${DEVICE}-userdebug")";
 
 echo -e ""
 
-echo -e "${bldred}Starting raumZero build for $DEVICE ${txtrst}"
+echo -e "${bldred}Starting raumZero build for ${DEVICE} ${txtrst}"
 
 # start compilation
 # log builds by date + time
-time brunch "raumzero_$DEVICE-userdebug" -j"$THREADS" >$LOGS/raumzero_$DEVICE-userdebug-$(date +'%Y%m%d-%T').log 2>&1;
+echo -e "$(time mka raumzero_${DEVICE}-userdebug -j${THREADS} 2>&1 | tee ${LOGS}/rZ_${DEVICE}-$(date +'%Y%m%d-%T').log)";
 echo -e ""
 
 # finished? get elapsed time
