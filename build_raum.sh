@@ -38,7 +38,7 @@ echo -e
 echo -e ""
 if [ "$SYNC" == "sync" ]
 then
-   echo -e "${bldred}Syncing latest linaro+raumZero sources ${txtrst}"
+   echo -e "${bldred}Syncing latest raumZero manifest ${txtrst}"
    repo sync -j"$THREADS"
    echo -e ""
 fi
@@ -68,7 +68,7 @@ echo -e "${bldred}Starting raumZero build for $DEVICE ${txtrst}"
 
 # start compilation
 # log builds by date + time
-time brunch "raumzero_$DEVICE-userdebug" -j"$THREADS" >$LOGS/raumzero_$DEVICE-userdebug-$(date +'%Y%m%d-%T').log 2>&1;
+time mka "raumzero_$DEVICE-userdebug" -j"$THREADS" 2>&1 | >$LOGS/raumzero_$DEVICE-userdebug-$(date +'%Y%m%d-%T').log;
 echo -e ""
 
 # finished? get elapsed time
