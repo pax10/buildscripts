@@ -21,7 +21,7 @@ CLEAN="$4"
 VERSION=`date +%Y%m%d`
 
 # Directory where you wanna store build logs
-LOGS="$HOME/android/build_logs"
+LOGS="../build_logs"
 
 # Time of build startup
 res1=$(date +%s.%N)
@@ -68,7 +68,7 @@ echo -e "${bldred}Starting raumZero build for $DEVICE ${txtrst}"
 
 # start compilation
 # log builds by date + time
-time mka "raumzero_$DEVICE-userdebug" -j"$THREADS" 2>&1 | >$LOGS/raumzero_$DEVICE-userdebug-$(date +'%Y%m%d-%T').log;
+time mka "raumzero_$DEVICE-userdebug" -j"$THREADS" 2>&1 | tee >$LOGS/raumzero_$DEVICE-$(date +'%Y%m%d-%T').log;
 echo -e ""
 
 # finished? get elapsed time
