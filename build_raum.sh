@@ -68,7 +68,7 @@ echo -e "${bldred}Starting raumZero build for $DEVICE ${txtrst}"
 
 # start compilation
 # log builds by date + time
-time mka "raumzero_$DEVICE-userdebug" -j"$THREADS" 2>&1 | tee >$LOGS/raumzero_$DEVICE.log | tail -f $LOGS/raumzero_$DEVICE.log;
+time mka "raumzero" -j"$THREADS" 2>&1 | tee $LOGS/raumzero_$DEVICE.log;
 echo -e ""
 
 # finished? get elapsed time
