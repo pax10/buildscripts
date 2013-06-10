@@ -15,6 +15,7 @@ DEVICE="$1"
 SYNC="$2"
 THREADS="$3"
 CLEAN="$4"
+NICE="$5"
 
 
 # Build Date/Version
@@ -36,20 +37,27 @@ echo -e
 
 # sync with latest sources
 echo -e ""
-if [ "$SYNC" == "sync" ]
-then
+if [ "$SYNC" == "sync" ]; then
    echo -e "${bldred}Syncing latest raumZero manifest ${txtrst}"
    repo sync -j"$THREADS"
    echo -e ""
 fi
 
 # setup environment
-if [ "$CLEAN" == "clean" ]
-then
+if [ "$CLEAN" == "clean" ]; then
    echo -e "${bldred}Cleaning up out folder ${txtrst}"
    make clobber;
 else
   echo -e "${bldred}Skipping out folder cleanup ${txtrst}"
+fi
+
+# use nice
+if [ "$NICE" == "" ]; then
+    NICE="20"
+elif [ "$NICE" == "0" ]; then
+    NICE="19"
+else
+    NICE="$NICE"
 fi
 
 
@@ -68,7 +76,7 @@ echo -e "${bldred}Starting raumZero build for $DEVICE ${txtrst}"
 
 # start compilation
 # log builds by date + time
-time mka "raumzero" -j"$THREADS" 2>&1 | tee $LOGS/raumzero_$DEVICE.log;
+time nice -n"$NICE" make raumzero -j"$THREADS" 2>&1 | tee $LOGS/raumzero_$DEVICE.log;
 echo -e ""
 
 # finished? get elapsed time
