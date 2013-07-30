@@ -39,26 +39,26 @@ echo -e
 # sync with latest sources
 echo -e ""
 if [ "$SYNC" == "sync" ]; then
-echo -e "${bldred}Syncing latest raumZero manifest ${txtrst}"
+   echo -e "${bldred}Syncing latest raumZero manifest ${txtrst}"
    repo sync -j"$THREADS"
    echo -e ""
 fi
 
 # setup environment
 if [ "$CLEAN" == "clean" ]; then
-echo -e "${bldred}Cleaning up out folder ${txtrst}"
+   echo -e "${bldred}Cleaning up out folder ${txtrst}"
    make clobber;
 else
-echo -e "${bldred}Skipping out folder cleanup ${txtrst}"
+    echo -e "${bldred}Skipping out folder cleanup ${txtrst}"
 fi
 
 # use nice
 if [ "$NICE" == "" ]; then
-NICE="10"
+    NICE="10"
 elif [ "$NICE" == "0" ]; then
-NICE="19"
+    NICE="19"
 else
-NICE="$NICE"
+    NICE="$NICE"
 fi
 
 # setup environment
