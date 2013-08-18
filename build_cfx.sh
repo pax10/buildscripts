@@ -82,7 +82,7 @@ sed -i -e 's/raumzero_//' $OUT/system/build.prop
 VERSION=`sed -n -e'/ro.cfx.version/s/^.*=//p' $OUT/system/build.prop`
 PACKAGE=$OUT/$VERSION.zip
 
- finished? get elapsed time
+# finished? get elapsed time
 res2=$(date +%s.%N)
 echo "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds) ${txtrst}"
 
