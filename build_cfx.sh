@@ -16,8 +16,9 @@ DATE=`date +"%Y%m%d"`
 DEVICE="$1"
 NICE="$2"
 THREADS="$3"
-SYNC="$4"
-CLEAN="$5"
+RELEASE="$4"
+SYNC="$5"
+CLEAN="$6"
 
 # Directory where you wanna store build logs
 LOGS="../build_logs"
@@ -52,9 +53,15 @@ echo -e "${bldblu}Setting up build environment ${txtrst}"
 echo -e ""
 echo -e "${bldblu}Starting cfX build for $DEVICE ${txtrst}"
 
-# lunch build
-lunch full_"$DEVICE"-codefirex ;
-echo -e ""
+# choices: 1: release 2: debug 3: development
+if [ "$RELEASE" == "release" ]; then
+    echo "..skipping toolchain build.."
+    choosecombo release full_toro-codefirex ;
+else
+    # lunch build
+    echo "lunching now and build/patching toolchain..."
+    lunch full_"$DEVICE"-codefirex ;
+fi
 
 echo -e ""
 echo -e "Checking for usr/lib.."
@@ -74,7 +81,7 @@ echo -e "---------------------"
 echo -e "device=$DEVICE nice=$NICE threads=$THREADS"
 echo -e "__________________________"
 echo -e ""
-time nice -n"$NICE" make otapackage -j"$THREADS" 2>&1 | tee $LOGS/full_$DEVICE-codefirex.log
+time nice -n"$NICE" make bacon -j"$THREADS" 2>&1 | tee $LOGS/full_$DEVICE-codefirex.log
 
 
 # Get Package Name
